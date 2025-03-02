@@ -56,13 +56,9 @@ The data is displayed in a RecyclerView with a clear layout that shows:
 ## Screenshots
 
 ![App Screenshot 1](screenshots/screenshot1.png)
-![App Screenshot 2](screenshots/screenshot2.png)
 
 ## Future Improvements
 
-- Add a refresh mechanism to reload data
-- Implement visual grouping with headers for each listId
-- Add loading indicators during data fetch
 - Implement offline caching of previously fetched data
 - Add unit and UI tests
 
