@@ -55,7 +55,8 @@ The data is displayed in a RecyclerView with a clear layout that shows:
 
 ## Screenshots
 
-[Screenshots would be included here in a real README]
+![App Screenshot 1](screenshots/screenshot1.png)
+![App Screenshot 2](screenshots/screenshot2.png)
 
 ## Future Improvements
 
