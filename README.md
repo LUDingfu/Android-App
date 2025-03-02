@@ -1,19 +1,24 @@
 # Fetch Data Display Android App
 
 ## Overview
-This Android application fetches data from an online JSON endpoint and displays it in a structured, easy-to-read format. The app demonstrates fundamental Android development concepts including:
+This Android application fetches data from an online JSON endpoint and displays it in a structured, easy-to-read format.
 
-- Network API requests using Volley
-- JSON parsing
-- RecyclerView implementation
-- Data filtering and sorting
-- Grouping and displaying organized content
+### Table of Contents
+- [Requirements Implemented](#requirements-implemented)
+- [Technical Implementation](#technical-implementation)
+  - [Components](#components)
+  - [Network Handling](#network-handling)
+  - [Data Processing](#data-processing)
+  - [UI Implementation](#ui-implementation)
+- [Screenshots](#screenshots)
+- [How to Run](#how-to-run)
+- [Dependencies](#dependencies)
 
 ## Requirements Implemented
 
-The application successfully implements all the specified requirements:
+The application implements all the requirements:
 
-1. **Data Retrieval**: Fetches data from the Fetch Hiring API endpoint
+1. **Data Retrieval**: Fetches data from: https://fetch-hiring.s3.amazonaws.com/hiring.json
 2. **Filtering**: Removes any items where the "name" field is null or empty
 3. **Sorting**: Sorts items first by "listId" (ascending) and then by "name" 
 4. **Display**: Presents the data in an organized list using RecyclerView
@@ -46,21 +51,9 @@ The data is displayed in a RecyclerView with a clear layout that shows:
 - List ID
 - Item Name
 
-## Challenges Overcome
-
-- **Empty Data Handling**: Implemented robust null/empty checking for the name field
-- **Natural Sorting**: Added logic to extract and compare numeric parts of item names for intuitive sorting
-- **Error Handling**: Added comprehensive error handling for network requests and JSON parsing
-- **User Feedback**: Added appropriate messages when no data is available or network errors occur
-
 ## Screenshots
 
 ![App Screenshot 1](screenshots/screenshot1.png)
-
-## Future Improvements
-
-- Implement offline caching of previously fetched data
-- Add unit and UI tests
 
 ## How to Run
 
