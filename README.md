@@ -1,68 +1,64 @@
 # Fetch Data Display Android App
 
 ## Overview
-This Android application fetches data from an online JSON endpoint and displays it in a structured, easy-to-read format.
+Fetches and displays JSON data from an API endpoint, implementing sorting and filtering logic.
 
 ### Table of Contents
-- [Requirements Implemented](#requirements-implemented)
-- [Technical Implementation](#technical-implementation)
-  - [Components](#components)
-  - [Network Handling](#network-handling)
-  - [Data Processing](#data-processing)
-  - [UI Implementation](#ui-implementation)
+- [Features](#features)
+- [Implementation Details](#implementation-details)
+- [Build & Deploy](#build--deploy)
 - [Screenshots](#screenshots)
-- [How to Run](#how-to-run)
-- [Dependencies](#dependencies)
 
-## Requirements Implemented
+## Features
 
-The application implements all the requirements:
+- Data Source: https://fetch-hiring.s3.amazonaws.com/hiring.json
+- Input Format:
+  ```json
+  {
+    "id": integer,
+    "listId": integer,
+    "name": string
+  }
+  ```
+- Filtering: Excludes items with null/empty "name" field
+- Sorting: Implements natural sorting by listId (ascending), then by name
 
-1. **Data Retrieval**: Fetches data from: https://fetch-hiring.s3.amazonaws.com/hiring.json
-2. **Filtering**: Removes any items where the "name" field is null or empty
-3. **Sorting**: Sorts items first by "listId" (ascending) and then by "name" 
-4. **Display**: Presents the data in an organized list using RecyclerView
-
-## Technical Implementation
-
-### Components
-
-- **MainActivity**: Handles data fetching, processing, and display setup
-- **Item**: Model class representing each data item with id, listId, and name
-- **Adapter**: Custom RecyclerView adapter to display items in the list
-- **Layout Files**: Define the UI structure for the activity and list items
-
-### Network Handling
-
-The app uses Volley to make HTTP requests to the API endpoint and process the JSON response efficiently.
+## Implementation Details
 
 ### Data Processing
+- Volley for API requests with custom JsonArrayRequest
+- Natural number extraction: Regex pattern `\d+` for numeric sorting in names
+- Custom Comparator implementation for dual-field sorting
 
-For each item in the response:
-1. The app checks if the "name" field is null or empty and filters out such items
-2. Valid items are added to a collection
-3. Items are then sorted by listId (primary) and name (secondary)
-4. Numeric values in names (e.g., "Item 276") are extracted for natural sorting
+### UI Architecture
+- RecyclerView with GridLayoutManager (2 columns)
+- Custom ItemAdapter with ViewBinding
+- ViewHolder pattern for efficient list rendering
+- Data binding using ListAdapter with DiffUtil
 
-### UI Implementation
+## Build & Deploy
 
-The data is displayed in a RecyclerView with a clear layout that shows:
-- Item ID
-- List ID
-- Item Name
+```bash
+# Build debug APK
+./gradlew assembleDebug
+
+# Install to connected device
+./gradlew installDebug
+
+# Run unit tests
+./gradlew test
+
+# Run instrumented tests
+./gradlew connectedAndroidTest
+```
+
+Required SDK versions:
+- Min SDK: 23
+- Target SDK: 35
+- Compile SDK: 35
 
 ## Screenshots
 
-![App Screenshot 1](screenshots/screenshot1.png)
+![Main Screen](screenshots/screenshot1.png)
+*Data displayed in sorted grid layout with filtering applied*
 
-## How to Run
-
-1. Clone the repository
-2. Open the project in Android Studio
-3. Build and run on an emulator or physical device
-
-## Dependencies
-
-- Volley for network requests
-- AndroidX libraries for UI components
-- RecyclerView for list display
